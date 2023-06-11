@@ -6,17 +6,29 @@ type Props = {
   color?: string;
   onPress: () => void;
   innerTextStyle?: any;
+  disabled?: boolean;
 };
 
-const Button = ({ color = "#9ACD32", ...props }: Props) => {
+const Button = ({
+  color = "#9ACD32",
+  text,
+  innerTextStyle,
+  onPress,
+  disabled = false,
+}: Props) => {
+  const backgroundColor = { backgroundColor: disabled ? "#9ACD3250" : color };
   return (
-    <Pressable style={styles.outer} onPress={props.onPress}>
+    <Pressable style={styles.outer} onPress={onPress} disabled={disabled}>
       {({ pressed }) => {
         return (
-          <View style={[styles.inner, pressed ? styles.pressed : null]}>
-            <Text style={[styles.innerText, props.innerTextStyle]}>
-              {props.text}
-            </Text>
+          <View
+            style={[
+              styles.inner,
+              pressed ? styles.pressed : null,
+              backgroundColor,
+            ]}
+          >
+            <Text style={[styles.innerText, innerTextStyle]}>{text}</Text>
           </View>
         );
       }}
@@ -31,7 +43,6 @@ const styles = StyleSheet.create({
   },
   inner: {
     flex: 1,
-    backgroundColor: "#9ACD32",
     padding: 10,
     borderRadius: 5,
     opacity: 1,
