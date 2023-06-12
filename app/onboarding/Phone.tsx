@@ -28,7 +28,7 @@ const Phone = (props: Props) => {
       </View>
       <Input
         label="Phone"
-        placeholder="Just enter +111111111"
+        placeholder="Just enter 111111111"
         value={number}
         onChange={setNumber}
         error={errorMessage}

@@ -14,6 +14,8 @@ const Index = (props: Props) => {
         <Image
           source={require("../../assets/yuzurect.png")}
           style={styles.logo}
+          resizeMethod="scale"
+          resizeMode="contain"
         />
       </View>
       <Text style={styles.heading}>Welcome to Little Yuzu!</Text>
@@ -32,8 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: 200,
-    resizeMode: "contain",
+    width: 240,
   },
   heading: {
     fontSize: 24,
