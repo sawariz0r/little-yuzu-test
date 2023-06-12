@@ -8,7 +8,6 @@ const Index = () => {
   const { getMenuData, isLoading: isMenuLoading } = useMenuData();
 
   useEffect(() => {
-    getProfile();
     getMenuData();
   }, []);
 

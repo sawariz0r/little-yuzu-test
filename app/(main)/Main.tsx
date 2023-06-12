@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Image,
   ImageBackground,
@@ -12,13 +12,14 @@ import {
 import Spacer from "../../components/Spacer";
 import Input from "../../components/Input";
 import { ScrollView } from "react-native-gesture-handler";
-import { MOCK_CATEGORIES, MOCK_MENU } from "../../shared/constants";
 import useMenuData from "../../hooks/useMenuData";
 import { transformMenuData } from "../../shared/utils";
+import { useRouter } from "expo-router";
 
 type Props = {};
 
 const Main = (props: Props) => {
+  const router = useRouter();
   const {
     categories,
     menuItems,
@@ -42,6 +43,13 @@ const Main = (props: Props) => {
           source={require("./../../assets/littleyuzu.png")}
           style={styles.logo}
         />
+        <Spacer />
+        <Pressable
+          style={styles.profileButton}
+          onPress={() => router.push("/Profile")}
+        >
+          <Text style={styles.profileButtonText}>Profile</Text>
+        </Pressable>
       </View>
       <View style={styles.hero}>
         <View style={styles.heroSplit}>
@@ -228,6 +236,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 12,
     backgroundColor: "#eee",
+  },
+  profileButton: {
+    backgroundColor: "#1d3c34cc",
+    borderRadius: 12,
+    padding: 12,
+    margin: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  profileButtonText: {
+    fontSize: 12,
+    color: "white",
   },
 });
 

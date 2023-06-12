@@ -17,10 +17,13 @@ export default function useProfileData() {
   const getProfileData = async () => {
     const data = await AsyncStorage.getItem("profileData");
     const parsedData = JSON.parse(data);
-    console.log("parsedData", parsedData);
     setProfileData(parsedData || defaultProfile);
     setProfileDataLoaded(true);
   };
+
+  useEffect(() => {
+    getProfileData();
+  }, [])
 
   const updateProfileData = async (newData: {
     name?: string;
@@ -48,10 +51,16 @@ export default function useProfileData() {
     setProfileData(updatedData);
   };
 
+  const logout = async () => {
+    await AsyncStorage.removeItem("profileData");
+    setProfileData(defaultProfile);
+  };
+
   return {
     profile: profileData,
     getProfile: getProfileData,
     isLoading: !profileDataLoaded,
     updateProfile: updateProfileData,
+    logout,
   };
 }
