@@ -9,14 +9,22 @@ type Props = {
   placeholder: string;
   onChange: (text: string) => void;
   error?: string;
+  inputStyle?: object;
 };
 
-const Input = ({ label, value, onChange, error, placeholder }: Props) => {
+const Input = ({
+  label,
+  value,
+  onChange,
+  error,
+  placeholder,
+  inputStyle,
+}: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, inputStyle]}
         value={value}
         placeholder={placeholder}
         onChangeText={onChange}
