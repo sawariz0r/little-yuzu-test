@@ -1,6 +1,8 @@
 export const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 export const PHONE_REGEX =
   /^(\+46|0)([\d]{2,3}[-\s]?[\d]{2,3}[-\s]?[\d]{2,3}[-\s]?[\d]{2,3})$/;
+export const API_URL =
+  "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/capstone.json";
 export const MOCK_MENU = [
   {
     id: 1,

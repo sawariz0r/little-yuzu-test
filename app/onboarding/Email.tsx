@@ -5,19 +5,23 @@ import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
 import Input from "../../components/Input";
 import { EMAIL_REGEX } from "../../shared/constants";
+import useProfileData from "../../hooks/useProfileData";
 
 type Props = {};
 
 const Email = (props: Props) => {
-  const [email, setEmail] = useState("");
+  const { updateProfile, profile } = useProfileData();
+  const [email, setEmail] = useState(profile.email);
   const router = useRouter();
 
-  const hasTypedEmail = email.length > 0 
+  const hasTypedEmail = email.length > 0;
   const isNotValidEmail = !email.toLowerCase().match(EMAIL_REGEX);
   const isDisabled = isNotValidEmail || email.length === 0;
-  const errorMessage = isNotValidEmail && hasTypedEmail ? "Please enter a valid email" : "";
+  const errorMessage =
+    isNotValidEmail && hasTypedEmail ? "Please enter a valid email" : "";
 
   const proceed = () => {
+    updateProfile({ email });
     router.push("/onboarding/Phone");
   };
 

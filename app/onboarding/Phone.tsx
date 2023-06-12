@@ -5,19 +5,25 @@ import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
 import Input from "../../components/Input";
 import { PHONE_REGEX } from "../../shared/constants";
+import useProfileData from "../../hooks/useProfileData";
 
 type Props = {};
 
 const Phone = (props: Props) => {
-  const [number, setNumber] = useState("");
+  const { updateProfile, profile } = useProfileData();
+  const [number, setNumber] = useState(profile.phone);
   const router = useRouter();
 
-  const hasTypedNumber = number.length > 0
+  const hasTypedNumber = number.length > 0;
   const isNotValidNumber = !number.match(PHONE_REGEX);
   const isDisabled = isNotValidNumber || number.length === 0;
-  const errorMessage = isNotValidNumber && hasTypedNumber ? "Please enter a valid phone number" : "";
+  const errorMessage =
+    isNotValidNumber && hasTypedNumber
+      ? "Please enter a valid phone number"
+      : "";
 
   const proceed = () => {
+    updateProfile({ phone: number });
     router.push("/onboarding/Done");
   };
 

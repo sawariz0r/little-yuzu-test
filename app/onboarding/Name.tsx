@@ -4,16 +4,19 @@ import { useRouter } from "expo-router";
 import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
 import Input from "../../components/Input";
+import useProfileData from "../../hooks/useProfileData";
 
 type Props = {};
 
 const Name = (props: Props) => {
-  const [name, setName] = useState("");
+  const { profile, updateProfile } = useProfileData();
+  const [name, setName] = useState(profile.name);
   const router = useRouter();
 
   const isDisabled = name.length === 0;
 
   const proceed = () => {
+    updateProfile({ name });
     router.push("/onboarding/Email");
   };
 

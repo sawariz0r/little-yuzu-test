@@ -5,16 +5,19 @@ import ConfettiCannon from "react-native-confetti-cannon";
 
 import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
+import useProfileData from "../../hooks/useProfileData";
 
 type Props = {};
 
 const Done = (props: Props) => {
   const router = useRouter();
+  const { updateProfile } = useProfileData();
 
   // TODO: Check that name, email and phone are valid
   // and that they exist in the sqlite database
 
   const proceed = () => {
+    updateProfile({ hasCompletedOnboarding: true });
     router.replace("/Main");
   };
 

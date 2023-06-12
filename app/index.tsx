@@ -1,9 +1,25 @@
 import { Redirect } from "expo-router";
+import useProfileData from "../hooks/useProfileData";
+import { useEffect } from "react";
+import useMenuData from "../hooks/useMenuData";
 
 const Index = () => {
-  const loggedIn = false;
-  if (loggedIn) {
-    return <Redirect href="/main" />;
+  const { profile, isLoading: isProfileLoading, getProfile } = useProfileData();
+  const { getMenuData, isLoading: isMenuLoading } = useMenuData();
+
+  useEffect(() => {
+    getProfile();
+    getMenuData();
+  }, []);
+
+  if (isProfileLoading) {
+    return null;
+  }
+
+  const { hasCompletedOnboarding } = profile;
+
+  if (hasCompletedOnboarding) {
+    return <Redirect href="/Main" />;
   } else {
     return <Redirect href="/onboarding" />;
   }
