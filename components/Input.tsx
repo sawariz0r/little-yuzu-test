@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   label: {
     // mui style label
     marginBottom: 4,
-    fontSize: 16,
-    color: "#333",
+    fontSize: 14,
+    color: "#6d6d6d",
   },
   input: {
     height: 60,
