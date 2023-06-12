@@ -3,6 +3,7 @@ export const PHONE_REGEX =
   /^(\+46|0)([\d]{2,3}[-\s]?[\d]{2,3}[-\s]?[\d]{2,3}[-\s]?[\d]{2,3})$/;
 export const MOCK_MENU = [
   {
+    id: 1,
     name: "Greek Salad",
     price: 12.99,
     description:
@@ -11,6 +12,7 @@ export const MOCK_MENU = [
     category: "starters",
   },
   {
+    id: 2,
     name: "Bruschetta",
     price: 7.99,
     description:
@@ -19,6 +21,7 @@ export const MOCK_MENU = [
     category: "starters",
   },
   {
+    id: 3,
     name: "Grilled Fish",
     price: 20.0,
     description: "Fantastic grilled fish seasoned with salt.",
@@ -26,6 +29,7 @@ export const MOCK_MENU = [
     category: "mains",
   },
   {
+    id: 4,
     name: "Pasta",
     price: 6.99,
     description: "Delicious pasta for your delight.",
@@ -33,6 +37,7 @@ export const MOCK_MENU = [
     category: "mains",
   },
   {
+    id: 5,
     name: "Lemon Dessert",
     price: 4.99,
     description: "You can't go wrong with this delicious lemon dessert!",
